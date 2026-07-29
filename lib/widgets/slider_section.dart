@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'component_card.dart';
 
 class SliderSection extends StatefulWidget {
-  const SliderSection({super.key});
+  final double value;
+  final ValueChanged<double>? onChanged;
+
+  const SliderSection({super.key, this.value = 62, this.onChanged});
 
   @override
   State<SliderSection> createState() => _SliderSectionState();
 }
 
 class _SliderSectionState extends State<SliderSection> {
-  double _value = 62;
+  late double _value = widget.value;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +28,13 @@ class _SliderSectionState extends State<SliderSection> {
             max: 100,
             activeColor: const Color(0xFF2563EB),
             inactiveColor: Colors.grey.shade300,
-            onChanged: (v) => setState(() => _value = v),
+            onChanged: (v) {
+              setState(() => _value = v);
+              widget.onChanged?.call(v);
+            },
           ),
-          Text(_value.round().toString(), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+          Text(_value.round().toString(),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
         ],
       ),
     );

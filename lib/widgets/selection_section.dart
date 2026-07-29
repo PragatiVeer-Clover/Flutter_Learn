@@ -2,17 +2,36 @@ import 'package:flutter/material.dart';
 import 'component_card.dart';
 
 class SelectionSection extends StatefulWidget {
-  const SelectionSection({super.key});
+  final bool emailNotif;
+  final bool smsNotif;
+  final int billing;
+  final bool darkMode;
+  final ValueChanged<bool>? onEmailChanged;
+  final ValueChanged<bool>? onSmsChanged;
+  final ValueChanged<int>? onBillingChanged;
+  final ValueChanged<bool>? onDarkModeChanged;
+
+  const SelectionSection({
+    super.key,
+    this.emailNotif = false,
+    this.smsNotif = false,
+    this.billing = 0,
+    this.darkMode = true,
+    this.onEmailChanged,
+    this.onSmsChanged,
+    this.onBillingChanged,
+    this.onDarkModeChanged,
+  });
 
   @override
   State<SelectionSection> createState() => _SelectionSectionState();
 }
 
 class _SelectionSectionState extends State<SelectionSection> {
-  bool emailNotif = false;
-  bool smsNotif = false;
-  int billing = 0; // 0 = monthly, 1 = annual
-  bool darkMode = true;
+  late bool _emailNotif = widget.emailNotif;
+  late bool _smsNotif = widget.smsNotif;
+  late int _billing = widget.billing;
+  late bool _darkMode = widget.darkMode;
 
   @override
   Widget build(BuildContext context) {
@@ -21,31 +40,27 @@ class _SelectionSectionState extends State<SelectionSection> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _checkbox(
-            'Email notifications',
-            emailNotif,
-            (v) => setState(() => emailNotif = v!),
-          ),
-          _checkbox(
-            'SMS notifications',
-            smsNotif,
-            (v) => setState(() => smsNotif = v!),
-          ),
+          _checkbox('Email notifications', _emailNotif, (v) {
+            setState(() => _emailNotif = v!);
+            widget.onEmailChanged?.call(v!);
+          }),
+          _checkbox('SMS notifications', _smsNotif, (v) {
+            setState(() => _smsNotif = v!);
+            widget.onSmsChanged?.call(v!);
+          }),
           _radio('Monthly billing', 0),
           _radio('Annual billing', 1),
           const SizedBox(height: 4),
           Row(
             children: [
-              Transform.scale(
-                scale: 0.7, // 1.0 is normal size. 0.8 makes it 20% smaller.
-                child: Switch(
-                  value: darkMode,
-                  onChanged: (v) => setState(() => darkMode = v),
-                  activeThumbColor: Colors.white,
-                  activeTrackColor: const Color(0xFF2563EB),
-                  // This removes extra padding around the small switch
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                ),
+              Switch(
+                value: _darkMode,
+                onChanged: (v) {
+                  setState(() => _darkMode = v);
+                  widget.onDarkModeChanged?.call(v);
+                },
+                activeThumbColor: Colors.white,
+                activeTrackColor: const Color(0xFF2563EB),
               ),
               const SizedBox(width: 8),
               const Text('Dark mode', style: TextStyle(fontSize: 14)),
@@ -59,23 +74,20 @@ class _SelectionSectionState extends State<SelectionSection> {
   Widget _checkbox(String label, bool value, ValueChanged<bool?> onChanged) {
     return Row(
       children: [
-        Checkbox(
-          value: value,
-          onChanged: onChanged,
-          side: BorderSide(color: Colors.grey.shade400),
-          activeColor: const Color(0xFF2563EB),
-          checkColor: Colors.white,  
-        
-        ),
-        Text(label, style: const TextStyle(fontSize: 14,color: Colors.black)),
+        Checkbox(value: value, onChanged: onChanged, side: BorderSide(color: Colors.grey.shade400),activeColor: const Color(0xFF2563EB),
+          checkColor: Colors.white, ),
+        Text(label, style: const TextStyle(fontSize: 14)),
       ],
     );
   }
 
   Widget _radio(String label, int value) {
-    final selected = billing == value;
+    final selected = _billing == value;
     return GestureDetector(
-      onTap: () => setState(() => billing = value),
+      onTap: () {
+        setState(() => _billing = value);
+        widget.onBillingChanged?.call(value);
+      },
       child: Row(
         children: [
           Container(
@@ -85,9 +97,7 @@ class _SelectionSectionState extends State<SelectionSection> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: selected
-                    ? const Color(0xFF2563EB)
-                    : Colors.grey.shade400,
+                color: selected ? const Color(0xFF2563EB) : Colors.grey.shade400,
                 width: 2,
               ),
             ),

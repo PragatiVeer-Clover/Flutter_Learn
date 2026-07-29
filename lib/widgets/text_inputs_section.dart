@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'component_card.dart';
 
 class TextInputsSection extends StatelessWidget {
-  const TextInputsSection({super.key});
+  final TextEditingController? nameController;
+  final TextEditingController? passwordController;
+
+  const TextInputsSection({super.key, this.nameController, this.passwordController});
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +16,11 @@ class TextInputsSection extends StatelessWidget {
         children: [
           const Text('Name', style: TextStyle(fontSize: 13, color: Colors.black87)),
           const SizedBox(height: 6),
-          _field(hint: 'Ada Lovelace'),
+          _field(controller: nameController, hint: 'Ada Lovelace'),
           const SizedBox(height: 14),
           const Text('Password', style: TextStyle(fontSize: 13, color: Colors.black87)),
           const SizedBox(height: 6),
-          _field(obscure: true),
+          _field(controller: passwordController, obscure: true),
           const SizedBox(height: 14),
           const Text('Disabled field', style: TextStyle(fontSize: 13, color: Colors.black87)),
           const SizedBox(height: 6),
@@ -27,11 +30,11 @@ class TextInputsSection extends StatelessWidget {
     );
   }
 
-  Widget _field({String hint = '', bool obscure = false, bool enabled = true}) {
+  Widget _field({TextEditingController? controller, String hint = '', bool obscure = false, bool enabled = true}) {
     return TextField(
       enabled: enabled,
       obscureText: obscure,
-      controller: obscure ? TextEditingController(text: '••••••••••') : null,
+      controller: controller,
       decoration: InputDecoration(
         hintText: hint,
         filled: !enabled,

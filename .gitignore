@@ -57,3 +57,6 @@ DerivedData/
 Thumbs.db
 *.log
 *.tmp
+
+# Kombai
+.kombai/
