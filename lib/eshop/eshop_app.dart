@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/cart_provider.dart';
 import 'providers/auth_provider.dart';
+import 'providers/wishlist_provider.dart';
 import 'auth/login_screen.dart';
 
 class EShopApp extends StatelessWidget {
@@ -13,6 +14,7 @@ class EShopApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => WishlistProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

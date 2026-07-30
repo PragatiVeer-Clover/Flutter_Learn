@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/product.dart';
 import '../providers/cart_provider.dart';
+import '../providers/wishlist_provider.dart';
 import '../cart/cart_screen.dart';
 
 class ProductDetailScreen extends StatefulWidget {
@@ -19,6 +20,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   Widget build(BuildContext context) {
     final p = widget.product;
     final inCart = context.watch<CartProvider>().contains(p.id);
+    final isFavorite = context.watch<WishlistProvider>().contains(p.id);
     final isWide = MediaQuery.of(context).size.width > 700;
 
     return Scaffold(
@@ -82,26 +84,28 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(isWide ? 40 : 16),
-        child: isWide ? _wideLayout(p, inCart) : _narrowLayout(p, inCart),
+        child: isWide
+            ? _wideLayout(p, inCart, isFavorite)
+            : _narrowLayout(p, inCart, isFavorite),
       ),
     );
   }
 
-  Widget _wideLayout(Product p, bool inCart) {
+  Widget _wideLayout(Product p, bool inCart, bool isFavorite) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(flex: 2, child: _image(p)),
         const SizedBox(width: 40),
-        Expanded(flex: 3, child: _info(p, inCart)),
+        Expanded(flex: 3, child: _info(p, inCart, isFavorite)),
       ],
     );
   }
 
-  Widget _narrowLayout(Product p, bool inCart) {
+  Widget _narrowLayout(Product p, bool inCart, bool isFavorite) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [_image(p), const SizedBox(height: 24), _info(p, inCart)],
+      children: [_image(p), const SizedBox(height: 24), _info(p, inCart, isFavorite)],
     );
   }
 
@@ -126,24 +130,45 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     );
   }
 
-  Widget _info(Product p, bool inCart) {
+  Widget _info(Product p, bool inCart, bool isFavorite) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-          decoration: BoxDecoration(
-            color: const Color(0xFFEFF6FF),
-            borderRadius: BorderRadius.circular(6),
-          ),
-          child: Text(
-            p.category,
-            style: const TextStyle(
-              fontSize: 12,
-              color: Color(0xFF2563EB),
-              fontWeight: FontWeight.w500,
+        Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              decoration: BoxDecoration(
+                color: const Color(0xFFEFF6FF),
+                borderRadius: BorderRadius.circular(6),
+              ),
+              child: Text(
+                p.category,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Color(0xFF2563EB),
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
-          ),
+            const SizedBox(width: 10),
+            GestureDetector(
+              onTap: () => context.read<WishlistProvider>().toggle(p),
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Colors.grey.shade200),
+                ),
+                child: Icon(
+                  isFavorite ? Icons.favorite : Icons.favorite_border,
+                  size: 18,
+                  color: isFavorite ? const Color(0xFFDC2626) : Colors.grey.shade700,
+                ),
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 12),
         Text(
@@ -213,6 +238,26 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               ),
             ],
           ],
+        ),
+        const SizedBox(height: 20),
+        Container(
+          padding: const EdgeInsets.all(14),
+          decoration: BoxDecoration(
+            color: const Color(0xFFF8FAFC),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            children: [
+              const Icon(Icons.local_shipping_outlined, color: Color(0xFF2563EB)),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  'Fast delivery, hassle-free returns, and premium support included.',
+                  style: TextStyle(fontSize: 13, color: Colors.grey.shade700),
+                ),
+              ),
+            ],
+          ),
         ),
         const SizedBox(height: 20),
         Text(

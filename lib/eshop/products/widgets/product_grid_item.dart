@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../models/product.dart';
 import '../../providers/cart_provider.dart';
+import '../../providers/wishlist_provider.dart';
 import '../product_detail_screen.dart';
 
 class ProductGridItem extends StatelessWidget {
@@ -11,6 +12,7 @@ class ProductGridItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final inCart = context.watch<CartProvider>().contains(product.id);
+    final isFavorite = context.watch<WishlistProvider>().contains(product.id);
 
     return GestureDetector(
       onTap: () => Navigator.push(
@@ -81,9 +83,29 @@ class ProductGridItem extends StatelessWidget {
                       ),
                     ),
                   ),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: GestureDetector(
+                    onTap: () => context.read<WishlistProvider>().toggle(product),
+                    child: Container(
+                      width: 34,
+                      height: 34,
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.9),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        isFavorite ? Icons.favorite : Icons.favorite_border,
+                        size: 18,
+                        color: isFavorite ? const Color(0xFFDC2626) : Colors.grey.shade700,
+                      ),
+                    ),
+                  ),
+                ),
                 if (product.hasDiscount)
                   Positioned(
-                    top: 10,
+                    top: 54,
                     right: 10,
                     child: Container(
                       padding: const EdgeInsets.symmetric(

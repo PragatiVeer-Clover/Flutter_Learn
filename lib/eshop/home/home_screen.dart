@@ -8,6 +8,7 @@ import '../auth/login_screen.dart';
 import 'widgets/banner_slider.dart';
 import 'widgets/category_card.dart';
 import '../products/widgets/product_grid_item.dart';
+import '../providers/wishlist_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -32,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final cartCount = context.watch<CartProvider>().itemCount;
     final auth = context.watch<AuthProvider>();
+    final wishlistCount = context.watch<WishlistProvider>().items.length;
     final isWide = MediaQuery.of(context).size.width > 900;
 
     return Scaffold(
@@ -218,6 +220,8 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            _heroSummaryCard(wishlistCount),
+            const SizedBox(height: 20),
             const BannerSlider(),
             const SizedBox(height: 28),
             const Text(
@@ -298,6 +302,69 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _heroSummaryCard(int wishlistCount) {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [Color(0xFF2563EB), Color(0xFF4F46E5)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF2563EB).withValues(alpha: 0.18),
+            blurRadius: 18,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Fresh picks for your day',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  wishlistCount > 0
+                      ? 'You have $wishlistCount favorite item${wishlistCount == 1 ? '' : 's'} waiting for you.'
+                      : 'Discover trending essentials and save favorites as you shop.',
+                  style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 13,
+                    height: 1.5,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.16),
+              borderRadius: BorderRadius.circular(14),
+            ),
+            child: const Icon(
+              Icons.auto_awesome,
+              color: Colors.white,
+              size: 26,
+            ),
+          ),
+        ],
       ),
     );
   }
