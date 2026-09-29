@@ -2,6 +2,12 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "args",
+      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/args-2.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
       "name": "async",
       "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/async-2.13.1",
       "packageUri": "lib/",
@@ -47,7 +53,7 @@
       "name": "flutter",
       "rootUri": "file:///Users/clover/flutter/packages/flutter",
       "packageUri": "lib/",
-      "languageVersion": "3.10"
+      "languageVersion": "3.11"
     },
     {
       "name": "flutter_lints",
@@ -56,10 +62,34 @@
       "languageVersion": "3.8"
     },
     {
+      "name": "flutter_markdown",
+      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/flutter_markdown-0.7.7+1",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///Users/clover/flutter/packages/flutter_test",
       "packageUri": "lib/",
-      "languageVersion": "3.10"
+      "languageVersion": "3.11"
+    },
+    {
+      "name": "google_generative_ai",
+      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/google_generative_ai-0.4.7",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "http",
+      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/http-1.6.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "http_parser",
+      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/http_parser-4.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
     },
     {
       "name": "leak_tracker",
@@ -86,10 +116,16 @@
       "languageVersion": "3.8"
     },
     {
-      "name": "matcher",
-      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/matcher-0.12.19",
+      "name": "markdown",
+      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/markdown-7.3.1",
       "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.9"
+    },
+    {
+      "name": "matcher",
+      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/matcher-0.12.20",
+      "packageUri": "lib/",
+      "languageVersion": "3.10"
     },
     {
       "name": "material_color_utilities",
@@ -99,7 +135,7 @@
     },
     {
       "name": "meta",
-      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/meta-1.18.0",
+      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/meta-1.19.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
@@ -113,7 +149,7 @@
       "name": "sky_engine",
       "rootUri": "file:///Users/clover/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
-      "languageVersion": "3.10"
+      "languageVersion": "3.11"
     },
     {
       "name": "source_span",
@@ -147,21 +183,33 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/test_api-0.7.11",
+      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/test_api-0.7.12",
       "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.10"
+    },
+    {
+      "name": "typed_data",
+      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/typed_data-1.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
     },
     {
       "name": "vector_math",
-      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/vector_math-2.2.0",
+      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/vector_math-2.4.3",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.10"
     },
     {
       "name": "vm_service",
       "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/vm_service-15.2.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
+    },
+    {
+      "name": "web",
+      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/web-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
     },
     {
       "name": "i_am_rich",
@@ -171,8 +219,8 @@
     }
   ],
   "generator": "pub",
-  "generatorVersion": "3.12.2",
+  "generatorVersion": "3.13.0",
   "flutterRoot": "file:///Users/clover/flutter",
-  "flutterVersion": "3.44.5",
+  "flutterVersion": "3.47.0",
   "pubCache": "file:///Users/clover/.pub-cache"
 }
