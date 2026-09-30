@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'recipe_data.dart';
 import 'recipe_detail.dart';
+import 'orders_page.dart';
 
 class RecipesPage extends StatefulWidget {
   const RecipesPage({super.key});
@@ -39,6 +40,13 @@ class _RecipesPageState extends State<RecipesPage> {
             Text('Recipes', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
           ],
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.receipt_long, color: Colors.white),
+            onPressed: () => Navigator.push(context,
+                MaterialPageRoute(builder: (_) => OrdersPage())),
+          ),
+        ],
       ),
       body: Center(
         child: ConstrainedBox(

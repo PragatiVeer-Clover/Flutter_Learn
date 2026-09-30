@@ -6,6 +6,7 @@ class Recipe {
   final int time;
   final int servings;
   final String difficulty;
+  final double price;
   final List<String> ingredients;
   final List<String> steps;
 
@@ -17,6 +18,7 @@ class Recipe {
     required this.time,
     required this.servings,
     required this.difficulty,
+    required this.price,
     required this.ingredients,
     required this.steps,
   });
@@ -31,6 +33,7 @@ final List<Recipe> recipes = [
     time: 30,
     servings: 2,
     difficulty: 'Easy',
+    price: 12.99,
     ingredients: [
       '200g spaghetti',
       '100g pancetta or bacon',
@@ -57,6 +60,7 @@ final List<Recipe> recipes = [
     time: 45,
     servings: 4,
     difficulty: 'Medium',
+    price: 15.99,
     ingredients: [
       '500g chicken breast',
       '200ml tomato sauce',
@@ -85,6 +89,7 @@ final List<Recipe> recipes = [
     time: 10,
     servings: 1,
     difficulty: 'Easy',
+    price: 8.99,
     ingredients: [
       '2 slices sourdough bread',
       '1 ripe avocado',
@@ -110,6 +115,7 @@ final List<Recipe> recipes = [
     time: 25,
     servings: 2,
     difficulty: 'Medium',
+    price: 9.99,
     ingredients: [
       '100g dark chocolate',
       '100g butter',
@@ -137,6 +143,7 @@ final List<Recipe> recipes = [
     time: 15,
     servings: 2,
     difficulty: 'Easy',
+    price: 7.99,
     ingredients: [
       '1 romaine lettuce',
       '50g Parmesan cheese',
@@ -162,6 +169,7 @@ final List<Recipe> recipes = [
     time: 20,
     servings: 2,
     difficulty: 'Easy',
+    price: 13.99,
     ingredients: [
       '400g ground beef',
       '2 burger buns',
@@ -187,6 +195,7 @@ final List<Recipe> recipes = [
     time: 40,
     servings: 3,
     difficulty: 'Medium',
+    price: 11.99,
     ingredients: [
       '300g pizza dough',
       '100ml tomato sauce',
@@ -213,6 +222,7 @@ final List<Recipe> recipes = [
     time: 90,
     servings: 4,
     difficulty: 'Medium',
+    price: 17.99,
     ingredients: [
       '600g beef chuck, cubed',
       '3 carrots, chopped',

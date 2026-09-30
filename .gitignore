@@ -33,3 +33,5 @@ windows/flutter/ephemeral/
 # Misc
 .kilo/
 .kombai/
+# Widget Preview related
+.widget_preview/
