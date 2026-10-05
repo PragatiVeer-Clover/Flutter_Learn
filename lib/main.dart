@@ -1,33 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'screens/Home.dart';
-// import 'Cooking/recipes_page.dart';
+import 'Movie/movies_page.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
- SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
-  runApp(new MyFirstWebApp());
+  runApp(const MovieApp());
 }
 
-class MyFirstWebApp extends StatelessWidget {
-  const MyFirstWebApp({super.key});
+class MovieApp extends StatelessWidget {
+  const MovieApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    bool _isDarkMode = false;
     return MaterialApp(
-      title: 'Grocery App',
-      theme: ThemeData(
-        scaffoldBackgroundColor: _isDarkMode ? Colors.deepOrange,
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ),
-      home: Home(),
+      title: 'CineWorld',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: const Color(0xFF0A0A0A),
+        colorScheme: const ColorScheme.dark(primary: Colors.redAccent),
+      ),
+      home: const MoviesPage(),
     );
   }
 }
-
-

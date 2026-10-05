@@ -11,7 +11,8 @@
         "flutter",
         "flutter_markdown",
         "google_generative_ai",
-        "http"
+        "http",
+        "web"
       ],
       "devDependencies": [
         "flutter_lints",
@@ -42,6 +43,11 @@
         "test_api",
         "vector_math"
       ]
+    },
+    {
+      "name": "web",
+      "version": "1.1.1",
+      "dependencies": []
     },
     {
       "name": "http",
@@ -175,11 +181,6 @@
         "string_scanner",
         "term_glyph"
       ]
-    },
-    {
-      "name": "web",
-      "version": "1.1.1",
-      "dependencies": []
     },
     {
       "name": "http_parser",
