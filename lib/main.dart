@@ -1,20 +1,33 @@
 import 'package:flutter/material.dart';
-import 'Cooking/recipes_page.dart';
+import 'package:flutter/services.dart';
+import 'screens/Home.dart';
+// import 'Cooking/recipes_page.dart';
 
 void main() {
-  runApp(CookingApp());
+  WidgetsFlutterBinding.ensureInitialized();
+ SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+  runApp(new MyFirstWebApp());
 }
 
-class CookingApp extends StatelessWidget {
-  const CookingApp({super.key});
+class MyFirstWebApp extends StatelessWidget {
+  const MyFirstWebApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    bool _isDarkMode = false;
     return MaterialApp(
+      title: 'Grocery App',
+      theme: ThemeData(
+        scaffoldBackgroundColor: _isDarkMode ? Colors.deepOrange,
+        primarySwatch: Colors.blue,
+        useMaterial3: true,
+      ),
+      home: Home(),
       debugShowCheckedModeBanner: false,
-      title: 'Cooking App',
-      theme: ThemeData.dark(),
-      home: RecipesPage(),
     );
   }
 }
+
+
