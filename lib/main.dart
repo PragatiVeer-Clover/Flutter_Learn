@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:i_am_rich/const/theme_data.dart';
 import 'screens/Home.dart';
 // import 'Cooking/recipes_page.dart';
 
@@ -16,14 +17,10 @@ class MyFirstWebApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool _isDarkMode = false;
+    bool _isDarkMode = true;
     return MaterialApp(
       title: 'Grocery App',
-      theme: ThemeData(
-        scaffoldBackgroundColor: _isDarkMode ? Colors.deepOrange,
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ),
+      theme: Styles.themeData(isDarkTheme, context)
       home: Home(),
       debugShowCheckedModeBanner: false,
     );
