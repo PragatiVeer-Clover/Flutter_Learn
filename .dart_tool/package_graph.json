@@ -7,8 +7,10 @@
       "name": "i_am_rich",
       "version": "1.0.0+1",
       "dependencies": [
+        "bloc",
         "cupertino_icons",
         "flutter",
+        "flutter_bloc",
         "flutter_markdown",
         "google_generative_ai",
         "http",
@@ -43,6 +45,22 @@
         "stream_channel",
         "test_api",
         "vector_math"
+      ]
+    },
+    {
+      "name": "flutter_bloc",
+      "version": "9.1.1",
+      "dependencies": [
+        "bloc",
+        "flutter",
+        "provider"
+      ]
+    },
+    {
+      "name": "bloc",
+      "version": "9.2.1",
+      "dependencies": [
+        "meta"
       ]
     },
     {

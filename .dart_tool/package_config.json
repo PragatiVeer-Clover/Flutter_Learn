@@ -14,6 +14,12 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "bloc",
+      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/bloc-9.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/boolean_selector-2.1.2",
       "packageUri": "lib/",
@@ -66,6 +72,12 @@
       "rootUri": "file:///Users/clover/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "3.11"
+    },
+    {
+      "name": "flutter_bloc",
+      "rootUri": "file:///Users/clover/.pub-cache/hosted/pub.dev/flutter_bloc-9.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
     },
     {
       "name": "flutter_lints",
