@@ -1,21 +1,21 @@
 import 'package:flutter/cupertino.dart';
-import 'package:i_am_rich/services/dark_theme_pefers.dart'; // Make sure this path is correct
+import 'package:i_am_rich/services/dark_theme_pefers.dart'; 
 
-class Darkthemeprovider with ChangeNotifier {
-  // 1. Instantiate your preferences class
-  final DarkThemePrefs _themePrefs = DarkThemePrefs(); 
+class DarkthemeProvider with ChangeNotifier {
   
-  // 2. Rename the private variable with an underscore to avoid naming conflicts
+  final DarkThemePrefs DarkthemePrefs = DarkThemePrefs(); 
+  
   bool _isDarkTheme = false;
 
-  // 3. Correct getter
-  bool get isDarkTheme => _isDarkTheme;
+  bool get getDarkTheme => _isDarkTheme;
 
-  // 4. Correct setter with proper syntax and local storage call
-  set isDarkTheme(bool value) {
+  get isDarkTheme => null;
+
+ 
+  set setDarkTheme(bool value) {
     _isDarkTheme = value;
-    _themePrefs.setDarkTheme(value); // Calls your asynchronous shared preferences method
-    notifyListeners();               // Notifies the UI to rebuild immediately
+    DarkthemePrefs.setDarkTheme(value); 
+    notifyListeners();         
   }
 }
 
